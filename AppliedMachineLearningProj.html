@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>The goal of this assignment is to build a machine learning algorithm identifying types of weight lifting exercises based off data gathered from a number of sensors. More information can be found <a href="http://groupware.les.inf.puc-rio.br/har">here</a>.</p>
+
+<p>I&#39;ll start by loading the data then taking a look at the dimensions.</p>
+
+<pre><code>## [1] 19622   160
+</code></pre>
+
+<p>Now I&#39;ll take a look at how much missing data I may have to deal with, given some of the variables are summary columns of multiple records.</p>
+
+<pre><code class="r">colSums(is.na(train))/nrow(train)
+</code></pre>
+
+<pre><code>##                        X                user_name     raw_timestamp_part_1 
+##                   0.0000                   0.0000                   0.0000 
+##     raw_timestamp_part_2           cvtd_timestamp               new_window 
+##                   0.0000                   0.0000                   0.0000 
+##               num_window                roll_belt               pitch_belt 
+##                   0.0000                   0.0000                   0.0000 
+##                 yaw_belt         total_accel_belt       kurtosis_roll_belt 
+##                   0.0000                   0.0000                   0.0000 
+##      kurtosis_picth_belt        kurtosis_yaw_belt       skewness_roll_belt 
+##                   0.0000                   0.0000                   0.0000 
+##     skewness_roll_belt.1        skewness_yaw_belt            max_roll_belt 
+##                   0.0000                   0.0000                   0.9793 
+##           max_picth_belt             max_yaw_belt            min_roll_belt 
+##                   0.9793                   0.0000                   0.9793 
+##           min_pitch_belt             min_yaw_belt      amplitude_roll_belt 
+##                   0.9793                   0.0000                   0.9793 
+##     amplitude_pitch_belt       amplitude_yaw_belt     var_total_accel_belt 
+##                   0.9793                   0.0000                   0.9793 
+##            avg_roll_belt         stddev_roll_belt            var_roll_belt 
+##                   0.9793                   0.9793                   0.9793 
+##           avg_pitch_belt        stddev_pitch_belt           var_pitch_belt 
+##                   0.9793                   0.9793                   0.9793 
+##             avg_yaw_belt          stddev_yaw_belt             var_yaw_belt 
+##                   0.9793                   0.9793                   0.9793 
+##             gyros_belt_x             gyros_belt_y             gyros_belt_z 
+##                   0.0000                   0.0000                   0.0000 
+##             accel_belt_x             accel_belt_y             accel_belt_z 
+##                   0.0000                   0.0000                   0.0000 
+##            magnet_belt_x            magnet_belt_y            magnet_belt_z 
+##                   0.0000                   0.0000                   0.0000 
+##                 roll_arm                pitch_arm                  yaw_arm 
+##                   0.0000                   0.0000                   0.0000 
+##          total_accel_arm            var_accel_arm             avg_roll_arm 
+##                   0.0000                   0.9793                   0.9793 
+##          stddev_roll_arm             var_roll_arm            avg_pitch_arm 
+##                   0.9793                   0.9793                   0.9793 
+##         stddev_pitch_arm            var_pitch_arm              avg_yaw_arm 
+##                   0.9793                   0.9793                   0.9793 
+##           stddev_yaw_arm              var_yaw_arm              gyros_arm_x 
+##                   0.9793                   0.9793                   0.0000 
+##              gyros_arm_y              gyros_arm_z              accel_arm_x 
+##                   0.0000                   0.0000                   0.0000 
+##              accel_arm_y              accel_arm_z             magnet_arm_x 
+##                   0.0000                   0.0000                   0.0000 
+##             magnet_arm_y             magnet_arm_z        kurtosis_roll_arm 
+##                   0.0000                   0.0000                   0.0000 
+##       kurtosis_picth_arm         kurtosis_yaw_arm        skewness_roll_arm 
+##                   0.0000                   0.0000                   0.0000 
+##       skewness_pitch_arm         skewness_yaw_arm             max_roll_arm 
+##                   0.0000                   0.0000                   0.9793 
+##            max_picth_arm              max_yaw_arm             min_roll_arm 
+##                   0.9793                   0.9793                   0.9793 
+##            min_pitch_arm              min_yaw_arm       amplitude_roll_arm 
+##                   0.9793                   0.9793                   0.9793 
+##      amplitude_pitch_arm        amplitude_yaw_arm            roll_dumbbell 
+##                   0.9793                   0.9793                   0.0000 
+##           pitch_dumbbell             yaw_dumbbell   kurtosis_roll_dumbbell 
+##                   0.0000                   0.0000                   0.0000 
+##  kurtosis_picth_dumbbell    kurtosis_yaw_dumbbell   skewness_roll_dumbbell 
+##                   0.0000                   0.0000                   0.0000 
+##  skewness_pitch_dumbbell    skewness_yaw_dumbbell        max_roll_dumbbell 
+##                   0.0000                   0.0000                   0.9793 
+##       max_picth_dumbbell         max_yaw_dumbbell        min_roll_dumbbell 
+##                   0.9793                   0.0000                   0.9793 
+##       min_pitch_dumbbell         min_yaw_dumbbell  amplitude_roll_dumbbell 
+##                   0.9793                   0.0000                   0.9793 
+## amplitude_pitch_dumbbell   amplitude_yaw_dumbbell     total_accel_dumbbell 
+##                   0.9793                   0.0000                   0.0000 
+##       var_accel_dumbbell        avg_roll_dumbbell     stddev_roll_dumbbell 
+##                   0.9793                   0.9793                   0.9793 
+##        var_roll_dumbbell       avg_pitch_dumbbell    stddev_pitch_dumbbell 
+##                   0.9793                   0.9793                   0.9793 
+##       var_pitch_dumbbell         avg_yaw_dumbbell      stddev_yaw_dumbbell 
+##                   0.9793                   0.9793                   0.9793 
+##         var_yaw_dumbbell         gyros_dumbbell_x         gyros_dumbbell_y 
+##                   0.9793                   0.0000                   0.0000 
+##         gyros_dumbbell_z         accel_dumbbell_x         accel_dumbbell_y 
+##                   0.0000                   0.0000                   0.0000 
+##         accel_dumbbell_z        magnet_dumbbell_x        magnet_dumbbell_y 
+##                   0.0000                   0.0000                   0.0000 
+##        magnet_dumbbell_z             roll_forearm            pitch_forearm 
+##                   0.0000                   0.0000                   0.0000 
+##              yaw_forearm    kurtosis_roll_forearm   kurtosis_picth_forearm 
+##                   0.0000                   0.0000                   0.0000 
+##     kurtosis_yaw_forearm    skewness_roll_forearm   skewness_pitch_forearm 
+##                   0.0000                   0.0000                   0.0000 
+##     skewness_yaw_forearm         max_roll_forearm        max_picth_forearm 
+##                   0.0000                   0.9793                   0.9793 
+##          max_yaw_forearm         min_roll_forearm        min_pitch_forearm 
+##                   0.0000                   0.9793                   0.9793 
+##          min_yaw_forearm   amplitude_roll_forearm  amplitude_pitch_forearm 
+##                   0.0000                   0.9793                   0.9793 
+##    amplitude_yaw_forearm      total_accel_forearm        var_accel_forearm 
+##                   0.0000                   0.0000                   0.9793 
+##         avg_roll_forearm      stddev_roll_forearm         var_roll_forearm 
+##                   0.9793                   0.9793                   0.9793 
+##        avg_pitch_forearm     stddev_pitch_forearm        var_pitch_forearm 
+##                   0.9793                   0.9793                   0.9793 
+##          avg_yaw_forearm       stddev_yaw_forearm          var_yaw_forearm 
+##                   0.9793                   0.9793                   0.9793 
+##          gyros_forearm_x          gyros_forearm_y          gyros_forearm_z 
+##                   0.0000                   0.0000                   0.0000 
+##          accel_forearm_x          accel_forearm_y          accel_forearm_z 
+##                   0.0000                   0.0000                   0.0000 
+##         magnet_forearm_x         magnet_forearm_y         magnet_forearm_z 
+##                   0.0000                   0.0000                   0.0000 
+##                   classe 
+##                   0.0000
+</code></pre>
+
+<p>Now I&#39;ll remove the columns that will not add anything to the model (general identification data, categorical info, summary columns etc.) and convert the remaining columns to numeric so I can run principal components.</p>
+
+<pre><code class="r">new.train &lt;-train[,-7:-1]
+new.train[new.train == &quot;#DIV/0!&quot;] &lt;- NA
+new.train[new.train == &quot;&quot;] &lt;- NA
+new.train &lt;- new.train[,colSums(is.na(new.train))/nrow(new.train) &lt; 0.9]
+
+convert.magic &lt;- function(obj,types){
+  out &lt;- lapply(1:length(obj),FUN = function(i){FUN1 &lt;- switch(types[i],character = as.character,numeric = as.numeric,factor = as.factor); FUN1(obj[,i])})
+  names(out) &lt;- colnames(obj)
+  as.data.frame(out)
+}
+
+new.train &lt;- convert.magic(new.train,c(rep(&quot;numeric&quot;,ncol(new.train)-1),&quot;factor&quot;))
+</code></pre>
+
+<p>Now I&#39;ll run principal components to reduce the potential variables while maintaining much of the variance.</p>
+
+<pre><code class="r">preProc &lt;- preProcess(new.train[,-ncol(new.train)],method=&quot;pca&quot;,thresh = .90)
+new.train.PCA &lt;- predict(preProc,new.train[,-ncol(new.train)])
+</code></pre>
+
+<p>Binding the principal components values to the &ldquo;classe&rdquo; variable.</p>
+
+<pre><code class="r">new.train &lt;- cbind(new.train.PCA,new.train$classe)
+names(new.train) &lt;- c(names(new.train.PCA),&quot;classe&quot;)
+</code></pre>
+
+<p>Now building a random forest model on the training data.</p>
+
+<pre><code class="r">model &lt;- randomForest(classe ~ .,data=new.train)
+model
+</code></pre>
+
+<pre><code>## 
+## Call:
+##  randomForest(formula = classe ~ ., data = new.train) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 4
+## 
+##         OOB estimate of  error rate: 1.73%
+## Confusion matrix:
+##      A    B    C    D    E class.error
+## A 5542   15   16    3    4     0.00681
+## B   40 3720   30    1    6     0.02028
+## C    9   35 3346   26    6     0.02221
+## D    5    2   96 3109    4     0.03327
+## E    3    9   16   14 3565     0.01164
+</code></pre>
+
+<pre><code class="r">plot(model,main=&quot;Random Forest Model&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAn1BMVEX9/v0AAAAAADkAAGUAAP8AOTkAOY8AZo8AZrUAzQAA//85AAA5ADk5AGU5OQA5OWU5OY85ZmU5ZrU5j485j9plAABlADllAGVlOQBlZjllZmVlj49ltbVltf2POQCPOTmPOWWPtY+P27WP29qP2/21ZgC1tWW124+1/rW1/v3ajzna24/a/tra/v39tWX924/9/rX9/tr9/v3/AAD/AP9zl2myAAAANXRSTlP//////////////////////////////////////////////////////////////////wD//+8vC2oAAAAJcEhZcwAACxIAAAsSAdLdfvwAABRqSURBVHic7Z0Nf+K4EYdL4qbB6fW2V7J715bcXS/0mrSBIPP9P1st68XyG5hIaIbM//nthgTMmOSRRiPZ4D8oIJI/UL8AQAPECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIF8pVi39/XGhuXyYfv3ubfPL+qXnyYn16P5u1f8aqvn1dLPpxO3t6f5x8RXz4DOIHGtrHk4jfLJz4m7/UAfUTIZ4U8xduvm5rhTfPtZTbf5sUoPX8s9FRd1DdUbeLPz3Vj7wuvEavx25Ri/1JB3m1zWH3oEM1DeTePOPmp/o5749/fQji9va0hvjL04o3ff/uzXbje9efax0be8924TBaWvGb8Dl3b+bHlc0nd/8Lxf/6sK4D/eMhiNvf0wriL45L9ff2p6Z7rmozd2+7h/qP/9p8U/fh98eb520tvO7Da/293ty3Eb9Ffc+97udNOtcb2/QdpPp/Pa7U6+3vD0HcYE/2iRB/aaz4tftei2903L1ttUP/TS1mrb8xbaMn3m9hHrGZ4ea5ia4VBuKfN3UGuPvvQy+u3ZN/IsRfFpvkV2Y4NuKbQXhavB4NnHirZ0q8CVrfhuJfb//zuNpBPC3NX1in71rASumc68WPpfoJ8UGq14/4DN+gpYfidw9/118mU71/Wdy5fvH1H/32Zbvo9fix4m5CfFCmNY9s7DNdFtF3uOJO5387+k8Vd3dvEH9pzF+4qcnqP/qqydZWfOPjb93p3JT4YDrXPLKxSwPavMkBZt7e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" alt="plot of chunk unnamed-chunk-7"/> </p>
+
+<p>Note that the estimated OOB error rate is <strong><em>1.8%</em></strong>, meaning the estimated accurracy is <strong><em>98.2%</em></strong>.</p>
+
+<p>Now preparing the test data set for predictions.</p>
+
+<pre><code class="r">test &lt;- read.csv(&quot;pml-testing.csv&quot;,colClasses=&quot;character&quot;)
+new.test &lt;-test[,c(-7:-1,-ncol(test))]
+new.test[new.test == &quot;#DIV/0!&quot;] &lt;- NA
+new.test[new.test == &quot;&quot;] &lt;- NA
+
+new.test &lt;- new.test[,colSums(is.na(new.test))/nrow(new.test) &lt; 0.9]
+
+new.test &lt;- convert.magic(new.test,c(rep(&quot;numeric&quot;,ncol(new.test))))
+
+new.test.PCA &lt;- predict(preProc,new.test)
+</code></pre>
+
+<p>Compiling predicted values.</p>
+
+<pre><code class="r">pv &lt;- predict(model,newdata = new.test.PCA)
+</code></pre>
+
+<p>Preparing files for submission.</p>
+
+<pre><code class="r">pml_write_files = function(x){
+  n = length(x)
+  for(i in 1:n){
+    filename = paste0(&quot;problem_id_&quot;,i,&quot;.txt&quot;)
+    write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
+  }
+}
+
+pml_write_files(pv)
+</code></pre>
+
+</body>
+
+</html>

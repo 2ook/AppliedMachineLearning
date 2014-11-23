@@ -1,0 +1,100 @@
+---
+title: "Applied Maching Learning Project"
+output: html_document
+---
+
+The goal of this assignment is to build a machine learning algorithm identifying types of weight lifting exercises based off data gathered from a number of sensors. More information can be found [here](http://groupware.les.inf.puc-rio.br/har).
+
+```{r, echo=FALSE}
+library(caret)
+library(randomForest)
+```
+
+I'll start by loading the data then taking a look at the dimensions.
+
+```{r, echo=FALSE}
+train <- read.csv("pml-training.csv",colClasses="character")
+dim(train)
+```
+
+Now I'll take a look at how much missing data I may have to deal with, given some of the variables are summary columns of multiple records.
+
+```{r}
+colSums(is.na(train))/nrow(train)
+```
+
+Now I'll remove the columns that will not add anything to the model (general identification data, categorical info, summary columns etc.) and convert the remaining columns to numeric so I can run principal components.
+
+```{r}
+new.train <-train[,-7:-1]
+new.train[new.train == "#DIV/0!"] <- NA
+new.train[new.train == ""] <- NA
+new.train <- new.train[,colSums(is.na(new.train))/nrow(new.train) < 0.9]
+
+convert.magic <- function(obj,types){
+  out <- lapply(1:length(obj),FUN = function(i){FUN1 <- switch(types[i],character = as.character,numeric = as.numeric,factor = as.factor); FUN1(obj[,i])})
+  names(out) <- colnames(obj)
+  as.data.frame(out)
+}
+
+new.train <- convert.magic(new.train,c(rep("numeric",ncol(new.train)-1),"factor"))
+```
+
+Now I'll run principal components to reduce the potential variables while maintaining much of the variance.
+
+```{r}
+preProc <- preProcess(new.train[,-ncol(new.train)],method="pca",thresh = .90)
+new.train.PCA <- predict(preProc,new.train[,-ncol(new.train)])
+```
+
+Binding the principal components values to the "classe" variable.
+
+```{r}
+new.train <- cbind(new.train.PCA,new.train$classe)
+names(new.train) <- c(names(new.train.PCA),"classe")
+```
+
+Now building a random forest model on the training data.
+
+```{r}
+model <- randomForest(classe ~ .,data=new.train)
+model
+plot(model,main="Random Forest Model")
+```
+
+Note that the estimated OOB error rate is ***1.8%***, meaning the estimated accurracy is ***98.2%***.
+
+Now preparing the test data set for predictions.
+
+```{r}
+test <- read.csv("pml-testing.csv",colClasses="character")
+new.test <-test[,c(-7:-1,-ncol(test))]
+new.test[new.test == "#DIV/0!"] <- NA
+new.test[new.test == ""] <- NA
+
+new.test <- new.test[,colSums(is.na(new.test))/nrow(new.test) < 0.9]
+
+new.test <- convert.magic(new.test,c(rep("numeric",ncol(new.test))))
+
+new.test.PCA <- predict(preProc,new.test)
+```
+
+Compiling predicted values.
+
+```{r}
+pv <- predict(model,newdata = new.test.PCA)
+```
+
+Preparing files for submission.
+
+```{r}
+pml_write_files = function(x){
+  n = length(x)
+  for(i in 1:n){
+    filename = paste0("problem_id_",i,".txt")
+    write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
+  }
+}
+
+pml_write_files(pv)
+```
